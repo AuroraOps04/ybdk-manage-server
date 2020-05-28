@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.ybdk.mapper.YibanUserMapper">
+  <resultMap id="BaseResultMap" type="com.study.ybdk.entity.YibanUser">
+    <id column="yiban_user_id" jdbcType="INTEGER" property="id" />
+    <result column="yiban_user_username" jdbcType="VARCHAR" property="username" />
+    <result column="yiban_user_password" jdbcType="VARCHAR" property="password" />
+    <result column="yiban_user_real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="yiban_user_sex" jdbcType="CHAR" property="sex" />
+    <result column="yiban_user_student_id" jdbcType="INTEGER" property="studentId" />
+    <result column="yiban_user_class_name" jdbcType="VARCHAR" property="className" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    yiban_user.id as yiban_user_id, yiban_user.username as yiban_user_username, yiban_user.`password` as `yiban_user_password`, 
+    yiban_user.real_name as yiban_user_real_name, yiban_user.sex as yiban_user_sex, yiban_user.student_id as yiban_user_student_id, 
+    yiban_user.class_name as yiban_user_class_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yiban_user yiban_user
+    where yiban_user.id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yiban_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.study.ybdk.entity.YibanUser" useGeneratedKeys="true">
+    insert into yiban_user (username, `password`, real_name, 
+      sex, student_id, class_name
+      )
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{studentId,jdbcType=INTEGER}, #{className,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.study.ybdk.entity.YibanUser" useGeneratedKeys="true">
+    insert into yiban_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="studentId != null">
+        student_id,
+      </if>
+      <if test="className != null">
+        class_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="studentId != null">
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="className != null">
+        #{className,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.ybdk.entity.YibanUser">
+    update yiban_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="studentId != null">
+        student_id = #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="className != null">
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.ybdk.entity.YibanUser">
+    update yiban_user
+    set username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      student_id = #{studentId,jdbcType=INTEGER},
+      class_name = #{className,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

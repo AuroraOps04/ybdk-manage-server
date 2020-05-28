@@ -1,0 +1,36 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: ybdk-manage-server-dubbo-yb
+  datasource:
+    url: jdbc:mysql:///ybdk?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+
+dubbo:
+  application:
+    name: ybdk-manage-server-dubbo-yiban
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    client: zkclient
+  protocol:
+    port: 20881
+    name: dubbo
+  scan:
+    base-packages: com.study.ybdk.service
+  service:
+    version: 0.1
+yiban:
+  url:
+    #  用户个人信息 get
+    userInfo: http://220.160.52.44:8080/mobile/mine/getUserInfo
+    # 自测 post
+    test: http://220.160.52.44:8080/mobile/examInfo/beginTest
+    # 考试 Post v    # 考试 Post {'examInfoId': '189'}
+    exam: http://220.160.52.44:8080/mobile/examInfo/beginExam
+    # 提交答案 Post
+    answer: http://220.160.52.44:8080/mobile/examInfo/answerQuestion
+    # 获取成绩 Get
+    score: http://220.160.52.44:8080/mobile/examInfo/getRecord?id=

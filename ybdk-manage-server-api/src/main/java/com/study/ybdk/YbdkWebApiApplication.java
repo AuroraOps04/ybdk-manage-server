@@ -12,9 +12,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 // 统一结果返回(controller直接返回实体类,用controllerAdvice来进行结构封装) ==> 已解决
 // TODO： 缓存 *
 // TODO: graphQL *
-// TODO: 本地文件存储系统 aliyun oss(考虑到被攻击消耗Money就不使用了) *
+// TODO: 用FastDFS存储(熟悉fastdfs的部署，部署到本机上 )。
 // TODO: 日志相关的知识需要学习 *
 // TODO: 网关 **
+// TODO: WebSocket ***
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @EnableSwagger2
 public class YbdkWebApiApplication {

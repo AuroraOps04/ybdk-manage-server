@@ -15,12 +15,6 @@
         <module>ybdk-manage-server-dubbo-course-interface</module>
         <module>ybdk-manage-server-dubbo-course-service</module>
     </modules>
-    <dependencies>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.3.1.tmp</version>
-        </dependency>
-    </dependencies>
+
 
 </project>
